@@ -22,7 +22,8 @@ COPY --from=base /app/.next ./.next
 COPY --from=base /app/public ./public
 COPY --from=base /app/prisma ./prisma
 
+ENV PORT=3000
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start -p $PORT"]
 
 
