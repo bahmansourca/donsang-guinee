@@ -28,6 +28,6 @@ COPY --from=base /app/prisma ./prisma
 
 ENV PORT=3000
 EXPOSE 3000
-CMD ["sh", "-c", "npx prisma migrate deploy && npx next start -p $PORT"]
+CMD ["sh", "-c", "npx prisma migrate deploy || npx prisma db push; npx next start -p $PORT"]
 
 
