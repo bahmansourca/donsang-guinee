@@ -7,7 +7,7 @@ services:
     plan: starter
     region: oregon
     buildCommand: npm install --no-audit --no-fund && npx prisma generate && npm run build
-    startCommand: npx prisma migrate deploy || npx prisma db push && npx next start -p $PORT
+    startCommand: npx prisma migrate deploy && npx prisma db push && npx next start -p $PORT
     envVars:
       - key: NODE_VERSION
         value: "20"
