@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden" style={{minHeight: "55vh"}}>
         {/* Grande image de la donneuse en <img> direct pour compatibilité CDN */}
         <img
           src="https://images.pexels.com/photos/7108163/pexels-photo-7108163.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -13,8 +13,8 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover opacity-60 -z-10"
         />
         {/* Logo goutte + carte Guinée */}
-        <div className="absolute right-[10%] top-16 md:top-24 z-0">
-          <div className="relative w-40 h-40 md:w-56 md:h-56">
+        <div className="absolute right-[8%] top-20 md:top-24 z-0">
+          <div className="relative w-36 h-36 md:w-52 md:h-52">
             <div className="absolute inset-0 rounded-full bg-[var(--brand-red)]/95 shadow-2xl" />
             <img src="/guinea-map.svg" alt="Carte Guinée" className="absolute inset-6 md:inset-8 object-contain" />
           </div>

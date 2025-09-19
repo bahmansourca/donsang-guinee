@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import Toaster from "@/components/Toaster";
 import BackButton from "@/components/BackButton";
+import MobileNav from "@/components/MobileNav";
 
 export const metadata: Metadata = {
   title: "Don de Sang Guinée",
@@ -35,15 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/actualites" className="hover:underline">Actualités</Link>
             </nav>
             <div className="flex items-center gap-3">
-              <div className="md:hidden overflow-x-auto no-scrollbar">
-                <div className="flex items-center gap-4 text-sm whitespace-nowrap pr-2">
-                  <Link href="/criteres">Qui peut donner ?</Link>
-                  <Link href="/etapes">Étapes du don</Link>
-                  <Link href="/quiz">Quiz</Link>
-                  <Link href="/recherche">Recherche</Link>
-                  <Link href="/actualites">Actualités</Link>
-                </div>
-              </div>
+              <MobileNav />
               <BackButton />
               <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
             </div>
