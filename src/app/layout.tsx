@@ -8,6 +8,7 @@ import { I18nProvider, useI18n } from "@/lib/i18n";
 import LangSwitcher from "@/components/LangSwitcher";
 import NavLinks from "@/components/NavLinks";
 import MobileNav from "@/components/MobileNav";
+import HeaderCTA from "@/components/HeaderCTA";
 
 export const metadata: Metadata = {
   title: "Don de Sang Guinée",
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <BackButton />
               <ThemeToggle />
               <LangSwitcher />
-              <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
+              <HeaderCTA />
             </div>
           </div>
         </header>
