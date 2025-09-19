@@ -17,6 +17,11 @@ model Donor {
   region          String
   isActive        Boolean    @default(true)
   lastDonationDate DateTime?
+  verified        Boolean    @default(false)
+  verificationCode String?
+  verificationExpiresAt DateTime?
+  verificationChannel String? // SMS | EMAIL
+  verificationTarget String?  // phone or email used to send
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
 }
