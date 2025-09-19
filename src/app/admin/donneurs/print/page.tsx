@@ -14,7 +14,18 @@ export default function PrintDonors() {
   }, []);
   return (
     <main className="container py-6 print:py-0">
-      <h1 className="text-2xl font-bold mb-4">Liste des donneurs</h1>
+      <style jsx global>{`
+        @page { size: A4 portrait; margin: 12mm; }
+        @media print {
+          header, footer, nav, .no-print { display: none !important; }
+          table { page-break-inside: auto; }
+          tr { page-break-inside: avoid; page-break-after: auto; }
+        }
+      `}</style>
+      <div className="mb-4 flex items-end justify-between">
+        <h1 className="text-2xl font-bold">Liste des donneurs</h1>
+        <div className="text-xs text-black/60">Imprimé le {new Date().toLocaleDateString()}</div>
+      </div>
       <table className="w-full text-sm">
         <thead>
           <tr className="text-left border-b border-black/10">
