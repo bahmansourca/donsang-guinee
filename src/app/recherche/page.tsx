@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { BLOOD_GROUPS } from "@/lib/constants";
 
 export default function Page({ searchParams }: { searchParams?: { city?: string; bloodGroup?: string } }) {
   const [loading, setLoading] = useState(false);
@@ -63,7 +64,7 @@ export default function Page({ searchParams }: { searchParams?: { city?: string;
               {results.map(d => (
                 <li key={d.id} className="p-4 rounded-lg ring-1 ring-black/10 bg-white">
                   <div className="font-medium">
-                    <a href={`tel:${d.phone}`} className="hover:underline">{d.fullName}</a> · {d.bloodGroup}
+                    <a href={`tel:${d.phone}`} className="hover:underline">{d.fullName}</a> · {BLOOD_GROUPS.find(bg => bg.value === d.bloodGroup)?.label || d.bloodGroup}
                   </div>
                   <div className="text-sm text-black/70">{d.city}, {d.region} · <a className="text-[var(--brand-red)] hover:underline" href={`tel:${d.phone}`}>{d.phone}</a>{d.email ? <a className="ml-1 text-[var(--brand-red)] hover:underline" href={`mailto:${d.email}`}> · {d.email}</a> : ""}</div>
                 </li>
