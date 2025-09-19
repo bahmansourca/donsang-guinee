@@ -80,6 +80,7 @@ export default function AdminDonorsPage() {
         <h1 className="text-2xl font-bold">Donneurs</h1>
         <div className="flex gap-2">
           <a className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}} href="/admin/donneurs/print" target="_blank" rel="noreferrer">Imprimer / PDF</a>
+          <a className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}} href="/api/donors/export/pdf" target="_blank" rel="noreferrer">Exporter PDF</a>
           <a className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}} href="/api/donors/export">Exporter CSV</a>
         </div>
       </div>
