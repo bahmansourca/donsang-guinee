@@ -6,6 +6,7 @@ import BackButton from "@/components/BackButton";
 import ThemeToggle from "@/components/ThemeToggle";
 import { I18nProvider, useI18n } from "@/lib/i18n";
 import LangSwitcher from "@/components/LangSwitcher";
+import NavLinks from "@/components/NavLinks";
 import MobileNav from "@/components/MobileNav";
 
 export const metadata: Metadata = {
@@ -32,13 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <img src="/logo-drop-guinea.svg" alt="Logo DonSang Guinée" width="36" height="36" />
               <span className="text-lg font-bold tracking-tight">DONSANG GUINÉE</span>
             </Link>
-            <nav className="hidden md:flex items-center gap-6 text-sm">
-              <Link href="/criteres" className="hover:underline">Qui peut donner ?</Link>
-              <Link href="/etapes" className="hover:underline">Étapes du don</Link>
-              <Link href="/quiz" className="hover:underline">Quiz</Link>
-              <Link href="/recherche" className="hover:underline">Recherche</Link>
-              <Link href="/actualites" className="hover:underline">Actualités</Link>
-            </nav>
+            <NavLinks />
             <div className="flex items-center gap-3">
               <MobileNav />
               <BackButton />
