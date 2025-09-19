@@ -20,8 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" id="top">
       <body className={`antialiased`}>
-        <header className="border-b border-black/10 dark:border-white/10">
-          <div className="container flex items-center justify-between py-4">
+        <header className="border-b border-black/10 dark:border-white/10 sticky top-0 z-50 bg-white/80 backdrop-blur">
+          <div className="container flex items-center justify-between py-3">
             <Link href="/" className="flex items-center gap-3">
               {/* logo */}
               <img src="/logo-drop-guinea.svg" alt="Logo DonSang Guinée" width="36" height="36" />
@@ -34,11 +34,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/recherche" className="hover:underline">Recherche</Link>
               <Link href="/actualites" className="hover:underline">Actualités</Link>
             </nav>
-            <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
+            <div className="flex items-center gap-3">
+              <div className="md:hidden overflow-x-auto no-scrollbar">
+                <div className="flex items-center gap-4 text-sm whitespace-nowrap pr-2">
+                  <Link href="/criteres">Qui peut donner ?</Link>
+                  <Link href="/etapes">Étapes du don</Link>
+                  <Link href="/quiz">Quiz</Link>
+                  <Link href="/recherche">Recherche</Link>
+                  <Link href="/actualites">Actualités</Link>
+                </div>
+              </div>
+              <BackButton />
+              <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
+            </div>
           </div>
         </header>
-        <a href="#top" className="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-11 h-11 rounded-full bg-[var(--brand-red)] text-white shadow-lg hover:opacity-90" aria-label="Retour en haut">↑</a>
-        <BackButton />
+        <a href="#top" className="fixed bottom-5 right-5 z-40 inline-flex items-center justify-center w-11 h-11 rounded-full bg-[var(--brand-red)] text-white shadow-lg hover:opacity-90" aria-label="Retour en haut">↑</a>
         {children}
         <Toaster />
         <footer className="mt-16 border-t border-black/10 dark:border-white/10">

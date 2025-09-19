@@ -19,10 +19,10 @@ export default function Home() {
             <img src="/guinea-map.svg" alt="Carte Guinée" className="absolute inset-6 md:inset-8 object-contain" />
           </div>
         </div>
-        <div className="container grid gap-10 md:grid-cols-2 items-center py-16 md:py-24 relative z-10">
-          <div className="backdrop-blur-sm bg-white/70 p-6 rounded-xl md:bg-transparent md:backdrop-blur-0 md:p-0">
+        <div className="container grid gap-10 md:grid-cols-2 items-center py-12 md:py-20 relative z-10">
+          <div className="max-w-xl">
             <span className="badge">Plateforme officielle</span>
-            <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
+            <h1 className="mt-4 text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
               Sauvez une vie <span className="text-[var(--brand-red)]">en un clic</span>
             </h1>
             <p className="mt-4 text-lg text-black/70">
@@ -38,7 +38,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-[4/3] rounded-2xl bg-white ring-1 ring-black/10 p-6">
+            <div className="rounded-2xl bg-white/90 ring-1 ring-black/10 p-6 shadow-lg">
               <h3 className="font-semibold">Recherche de donneurs</h3>
               <form action="/recherche" className="mt-4 grid md:grid-cols-2 gap-3">
                 <input name="city" placeholder="Ville (ex: Conakry)" className="w-full p-2 rounded-md ring-1 ring-black/10 bg-white" />
