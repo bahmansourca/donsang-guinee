@@ -1,7 +1,6 @@
 export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/prisma";
 import { isAdmin } from "@/lib/auth";
-import PDFDocument from "pdfkit";
 
 export async function GET() {
   if (!isAdmin()) {
@@ -9,6 +8,7 @@ export async function GET() {
   }
   const donors = await prisma.donor.findMany({ orderBy: { createdAt: "desc" } });
 
+  const PDFDocument = (await import("pdfkit")).default as any;
   const doc = new PDFDocument({ size: "A4", margin: 36 });
   const stream = doc as unknown as NodeJS.ReadableStream;
 
