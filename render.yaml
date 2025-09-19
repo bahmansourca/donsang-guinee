@@ -2,7 +2,8 @@ services:
   - type: web
     name: donsang-guinee
     env: node
-    rootDir: web
+    # Repo root est déjà le projet Next.js; ne pas cibler un sous-dossier inexistant
+    # rootDir: .
     plan: starter
     region: oregon
     buildCommand: npm install --no-audit --no-fund && npx prisma generate && npm run build
