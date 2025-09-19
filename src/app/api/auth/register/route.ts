@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { sendSms } from "@/lib/sms";
 
 function generateCode(): string {
   const n = Math.floor(100000 + Math.random() * 900000);
@@ -75,16 +76,14 @@ export async function POST(req: NextRequest) {
 
   // Try enqueue message if OutboxMessage model exists
   try {
-    // @ts-ignore: model may or may not exist; best-effort
-    await (prisma as any).outboxMessage?.create?.({
-      data: {
-        channel: verificationChannel,
-        to: verificationTarget || phone,
-        subject: verificationChannel === "EMAIL" ? "Code de vérification" : null,
-        body: `Votre code de vérification: ${code} (valide 10 min)`,
-        donorId: donor.id,
-      },
-    });
+    const content = `Votre code de vérification: ${code} (valide 10 min)`;
+    const to = (verificationTarget || phone)!;
+    if (verificationChannel === "SMS") {
+      await sendSms(to, content);
+    } else {
+      // TODO: brancher un provider email (SendGrid/SMTP). Pour l’instant, on log.
+      console.log("EMAIL to", to, content);
+    }
   } catch (_e) {
     // Fallback: log only
     console.log("OTP for", verificationTarget || phone, code);
