@@ -30,13 +30,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <I18nProvider>
         <header className="border-b border-black/10 dark:border-white/10 sticky top-0 z-50 bg-white/80 backdrop-blur">
           <div className="container flex items-center justify-between py-3">
-            <Link href="/" className="flex items-center gap-3">
-              {/* logo */}
-              <img src="/logo-drop-guinea.svg" alt="Logo DonSang Guinée" width="36" height="36" />
-              <span className="text-lg font-bold tracking-tight">DONSANG GUINÉE</span>
+            <Link href="/" className="flex items-center gap-3 min-w-0">
+              <img src="/logo-drop-guinea.svg" alt="Logo DonSang Guinée" width="36" height="36" className="shrink-0" />
+              <span className="hidden sm:inline text-lg font-bold tracking-tight">DONSANG GUINÉE</span>
             </Link>
-            <NavLinks />
-            <div className="flex items-center gap-3">
+            <div className="hidden md:block">
+              <NavLinks />
+            </div>
+            <div className="flex items-center gap-2 sm:gap-3">
               <MobileNav />
               <BackButton />
               <ThemeToggle />

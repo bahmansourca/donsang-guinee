@@ -19,6 +19,8 @@ html { scroll-behavior: smooth; }
 
 body { background: #fafafa; color: #111; }
 
+html.dark body { background: #0b0b0b; color: #f5f5f5; }
+
 
 
 
