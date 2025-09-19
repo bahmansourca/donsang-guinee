@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n";
 
 export default function Home() {
+  // Client-only texts via i18n helper
+  // Falls back to FR by default
+  // Note: this is a Server Component; for the static labels we keep FR, and dynamic text is client via small islands below.
   return (
     <main>
       <section className="relative overflow-hidden" style={{minHeight: "55vh"}}>

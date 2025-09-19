@@ -4,6 +4,8 @@ import "./globals.css";
 import Toaster from "@/components/Toaster";
 import BackButton from "@/components/BackButton";
 import ThemeToggle from "@/components/ThemeToggle";
+import { I18nProvider, useI18n } from "@/lib/i18n";
+import LangSwitcher from "@/components/LangSwitcher";
 import MobileNav from "@/components/MobileNav";
 
 export const metadata: Metadata = {
@@ -22,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" id="top">
       <body className={`antialiased`}>
+        <I18nProvider>
         <header className="border-b border-black/10 dark:border-white/10 sticky top-0 z-50 bg-white/80 backdrop-blur">
           <div className="container flex items-center justify-between py-3">
             <Link href="/" className="flex items-center gap-3">
@@ -40,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <MobileNav />
               <BackButton />
               <ThemeToggle />
+              <LangSwitcher />
               <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
             </div>
           </div>
@@ -68,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        </I18nProvider>
       </body>
     </html>
   );
