@@ -16,15 +16,20 @@ export default async function Page() {
   }
 
   // Stats côté serveur
-  const [donors, alerts] = await Promise.all([
+  const [donors, alerts, settings] = await Promise.all([
     prisma.donor.findMany({ select: { bloodGroup: true, region: true, verified: true } }),
     prisma.alert.findMany({ select: { status: true } }),
+    prisma.setting.findMany({ select: { key: true, value: true } }),
   ]);
   const totalDonors = donors.length;
   const verifiedDonors = donors.filter(d => d.verified).length;
   const openAlerts = alerts.filter(a => a.status === "OPEN").length;
   const groupCounts: Record<string, number> = {};
   donors.forEach(d => { groupCounts[d.bloodGroup] = (groupCounts[d.bloodGroup] || 0) + 1; });
+  const regionCounts: Record<string, number> = {};
+  donors.forEach(d => { regionCounts[d.region] = (regionCounts[d.region] || 0) + 1; });
+  const cfg = Object.fromEntries(settings.map(s => [s.key, s.value]));
+  const twilioConfigured = Boolean(cfg.TWILIO_ACCOUNT_SID || process.env.TWILIO_ACCOUNT_SID);
 
   return (
     <main className="container py-10">
@@ -63,13 +68,37 @@ export default async function Page() {
         </div>
 
         <div className="p-4 rounded-xl ring-1 ring-black/10 bg-white">
+          <div className="font-semibold mb-3">Répartition par région</div>
+          <div className="space-y-2">
+            {Object.entries(regionCounts).sort().map(([r, n]) => (
+              <div key={r} className="flex items-center gap-3">
+                <div className="w-24 text-xs text-black/60">{r}</div>
+                <div className="h-2 bg-black/10 rounded w-full">
+                  <div className="h-2 bg-[var(--brand-green)] rounded" style={{ width: `${Math.max(4, (n/Math.max(1,totalDonors))*100)}%` }} />
+                </div>
+                <div className="w-8 text-right text-xs">{n}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="p-4 rounded-xl ring-1 ring-black/10 bg-white">
           <div className="font-semibold mb-3">Accès rapide</div>
           <div className="grid gap-3 text-sm">
             <Link href="/admin/donneurs" className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Gérer les donneurs</Link>
             <Link href="/admin/alertes" className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Alertes urgentes</Link>
+            <Link href="/admin/messages" className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Messages ciblés</Link>
             <Link href="/admin/parametres" className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Paramètres</Link>
             <LogoutButton />
           </div>
+        </div>
+
+        <div className="p-4 rounded-xl ring-1 ring-black/10 bg-white">
+          <div className="font-semibold mb-1">Statut envoi SMS</div>
+          <div className="text-sm">Twilio: {twilioConfigured ? <span className="text-green-700 font-semibold">configuré</span> : <span className="text-red-700 font-semibold">non configuré</span>}</div>
+          <p className="text-xs text-black/60 mt-2">Renseignez les clés dans Paramètres pour activer les messages ciblés.</p>
         </div>
       </div>
     </main>
