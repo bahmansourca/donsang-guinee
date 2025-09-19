@@ -1,11 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
       <section className="relative overflow-hidden">
-        {/* Grande image de la donneuse */}
-        <img src="https://images.unsplash.com/photo-1582719417491-6f16fd357a3b?q=80&w=1600&auto=format&fit=crop" alt="Donneuse africaine" className="absolute inset-0 w-full h-full object-cover opacity-60 -z-10" />
+        {/* Grande image de la donneuse via Next/Image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="https://images.unsplash.com/photo-1582719417491-6f16fd357a3b?q=80&w=1600&auto=format&fit=crop"
+            alt="Donneuse africaine"
+            fill
+            priority
+            className="object-cover opacity-60"
+          />
+        </div>
         {/* Logo goutte + carte Guinée */}
         <div className="absolute right-[10%] top-16 md:top-24 z-0">
           <div className="relative w-40 h-40 md:w-56 md:h-56">
