@@ -30,15 +30,17 @@ export default function MobileNav() {
 
       {open && (
         <div className="fixed inset-0 z-[80]">
-          {/* arrière-plan semi-opaque pour garder le contexte visible */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
-          {/* panneau d’options sur fond blanc uniquement */}
+          {/* zone clic fermante */}
+          <div className="absolute inset-0" onClick={() => setOpen(false)} />
+          {/* bande blanche derrière le panneau pour une lisibilité parfaite */}
+          <div className="absolute right-0 top-0 h-full w-[86vw] max-w-[420px] bg-white" />
+          {/* panneau d’options */}
           <aside className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl ring-1 ring-black/10 p-6 flex flex-col">
             <div className="flex items-center justify-between">
               <div className="font-semibold tracking-tight">Menu</div>
               <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-black/10">✕</button>
             </div>
-            <nav className="mt-5 grid gap-2 text-base">
+            <nav className="mt-5 grid gap-2 text-base font-medium">
               <Link href="/" onClick={() => setOpen(false)} className="px-2 py-2 rounded hover:bg-black/5">Accueil</Link>
               <Link href="/criteres" onClick={() => setOpen(false)} className="px-2 py-2 rounded hover:bg-black/5">Qui peut donner ?</Link>
               <Link href="/etapes" onClick={() => setOpen(false)} className="px-2 py-2 rounded hover:bg-black/5">Étapes du don</Link>
