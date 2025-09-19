@@ -30,7 +30,7 @@ export default function MobileNav() {
 
       {open && (
         <div className="fixed inset-0 z-[80]">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="absolute inset-0 bg-white/95" onClick={() => setOpen(false)} />
           <aside className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl ring-1 ring-black/10 p-6 flex flex-col">
             <div className="flex items-center justify-between">
               <div className="font-semibold tracking-tight">Menu</div>
