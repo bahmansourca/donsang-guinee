@@ -39,12 +39,12 @@ export default function MobileNav() {
               <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-white/20 text-white">✕</button>
             </div>
             <nav className="mt-5 grid gap-2 text-base font-medium">
-              <Link href="/" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Accueil</Link>
-              <Link href="/criteres" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Qui peut donner ?</Link>
-              <Link href="/etapes" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Étapes du don</Link>
-              <Link href="/quiz" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Quiz</Link>
-              <Link href="/recherche" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Recherche</Link>
-              <Link href="/actualites" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Actualités</Link>
+              <Link href="/" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-white hover:bg-white/10">Accueil</Link>
+              <Link href="/criteres" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-white hover:bg-white/10">Qui peut donner ?</Link>
+              <Link href="/etapes" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-white hover:bg-white/10">Étapes du don</Link>
+              <Link href="/quiz" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-white hover:bg-white/10">Quiz</Link>
+              <Link href="/recherche" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-white hover:bg-white/10">Recherche</Link>
+              <Link href="/actualites" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-white hover:bg-white/10">Actualités</Link>
               <Link href="/inscription" onClick={() => setOpen(false)} className="block mt-3 text-center px-3 py-2 rounded-md bg-white text-[var(--brand-red)] font-semibold">Devenir donneur</Link>
             </nav>
           </aside>
