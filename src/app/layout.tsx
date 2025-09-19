@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import Toaster from "@/components/Toaster";
 import BackButton from "@/components/BackButton";
+import ThemeToggle from "@/components/ThemeToggle";
 import MobileNav from "@/components/MobileNav";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex items-center gap-3">
               <MobileNav />
               <BackButton />
+              <ThemeToggle />
               <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
             </div>
           </div>
