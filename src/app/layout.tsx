@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import Toaster from "@/components/Toaster";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Don de Sang Guinée",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
         <a href="#top" className="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-11 h-11 rounded-full bg-[var(--brand-red)] text-white shadow-lg hover:opacity-90" aria-label="Retour en haut">↑</a>
+        <BackButton />
         {children}
         <Toaster />
         <footer className="mt-16 border-t border-black/10 dark:border-white/10">

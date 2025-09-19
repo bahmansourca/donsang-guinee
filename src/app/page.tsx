@@ -4,9 +4,17 @@ export default function Home() {
   return (
     <main>
       <section className="relative overflow-hidden">
-        <img src="/guinea-map.svg" alt="Carte de la Guinée" className="absolute inset-0 w-full h-full object-cover opacity-20 -z-10" />
-        <div className="container grid gap-10 md:grid-cols-2 items-center py-16 md:py-24">
-          <div>
+        {/* Grande image de la donneuse */}
+        <img src="https://images.unsplash.com/photo-1582719417491-6f16fd357a3b?q=80&w=1600&auto=format&fit=crop" alt="Donneuse africaine" className="absolute inset-0 w-full h-full object-cover opacity-60 -z-10" />
+        {/* Logo goutte + carte Guinée */}
+        <div className="absolute right-[10%] top-16 md:top-24 z-0">
+          <div className="relative w-40 h-40 md:w-56 md:h-56">
+            <div className="absolute inset-0 rounded-full bg-[var(--brand-red)]/95 shadow-2xl" />
+            <img src="/guinea-map.svg" alt="Carte Guinée" className="absolute inset-6 md:inset-8 object-contain" />
+          </div>
+        </div>
+        <div className="container grid gap-10 md:grid-cols-2 items-center py-16 md:py-24 relative z-10">
+          <div className="backdrop-blur-sm bg-white/70 p-6 rounded-xl md:bg-transparent md:backdrop-blur-0 md:p-0">
             <span className="badge">Plateforme officielle</span>
             <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
               Sauvez une vie <span className="text-[var(--brand-red)]">en un clic</span>
@@ -66,5 +74,7 @@ export default function Home() {
     </main>
   );
 }
+
+
 
 
