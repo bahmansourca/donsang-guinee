@@ -7,6 +7,8 @@ export default function AdminAlertsPage() {
   const [loading, setLoading] = useState(false);
   const [bg, setBg] = useState("");
   const [region, setRegion] = useState("");
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
 
   async function load() {
     setLoading(true);
@@ -70,7 +72,7 @@ export default function AdminAlertsPage() {
       </div>
 
       <ul className="mt-4 grid gap-3">
-        {items.map(a => (
+        {items.slice((page-1)*pageSize, (page-1)*pageSize+pageSize).map(a => (
           <li key={a.id} className="p-4 rounded-lg ring-1 ring-black/10 bg-white">
             <div className="font-semibold">{a.title} · {a.bloodGroup} · {a.region}</div>
             <div className="text-sm text-black/70">{a.content}</div>
@@ -81,6 +83,15 @@ export default function AdminAlertsPage() {
           </li>
         ))}
       </ul>
+      {items.length > 0 && (
+        <div className="mt-4 flex items-center justify-between text-sm">
+          <div className="text-black/60">Page {page} / {Math.max(1, Math.ceil(items.length/pageSize))}</div>
+          <div className="flex gap-2">
+            <button disabled={page<=1} onClick={()=>setPage(p=>Math.max(1,p-1))} className="btn" style={{border:"1px solid rgba(0,0,0,0.1)", opacity: page<=1?0.5:1}}>Précédent</button>
+            <button disabled={page>=Math.ceil(items.length/pageSize)} onClick={()=>setPage(p=>Math.min(Math.ceil(items.length/pageSize),p+1))} className="btn" style={{border:"1px solid rgba(0,0,0,0.1)", opacity: page>=Math.ceil(items.length/pageSize)?0.5:1}}>Suivant</button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

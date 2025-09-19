@@ -20,6 +20,8 @@ export default function AdminDonorsPage() {
   const [bg, setBg] = useState("");
   const [region, setRegion] = useState("");
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
 
   async function load() {
     setLoading(true);
@@ -42,6 +44,12 @@ export default function AdminDonorsPage() {
       (!region || d.region === region)
     );
   }, [items, q, bg, region]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const paged = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    return filtered.slice(start, start + pageSize);
+  }, [filtered, page]);
 
   async function onCreate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -70,7 +78,10 @@ export default function AdminDonorsPage() {
     <main className="container py-10">
       <div className="flex items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">Donneurs</h1>
-        <a className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}} href="/api/donors/export">Exporter CSV</a>
+        <div className="flex gap-2">
+          <a className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}} href="/admin/donneurs/print" target="_blank" rel="noreferrer">Imprimer / PDF</a>
+          <a className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}} href="/api/donors/export">Exporter CSV</a>
+        </div>
       </div>
 
       <form onSubmit={onCreate} className="mt-4 grid gap-2 md:grid-cols-6">
@@ -115,7 +126,7 @@ export default function AdminDonorsPage() {
             </tr>
           </thead>
           <tbody>
-            {filtered.map(d => (
+            {paged.map(d => (
               <tr key={d.id} className="border-b border-black/5">
                 <td className="py-2 font-medium">{d.fullName}</td>
                 <td className="py-2">{BLOOD_GROUPS.find(x=>x.value===d.bloodGroup)?.label || d.bloodGroup}</td>
@@ -133,6 +144,15 @@ export default function AdminDonorsPage() {
         </table>
         {filtered.length === 0 && !loading && (
           <div className="text-sm text-black/60 py-6">Aucun résultat.</div>
+        )}
+        {filtered.length > 0 && (
+          <div className="mt-4 flex items-center justify-between text-sm">
+            <div className="text-black/60">Page {page} / {totalPages}</div>
+            <div className="flex gap-2">
+              <button disabled={page<=1} onClick={()=>setPage(p=>Math.max(1,p-1))} className="btn" style={{border:"1px solid rgba(0,0,0,0.1)", opacity: page<=1?0.5:1}}>Précédent</button>
+              <button disabled={page>=totalPages} onClick={()=>setPage(p=>Math.min(totalPages,p+1))} className="btn" style={{border:"1px solid rgba(0,0,0,0.1)", opacity: page>=totalPages?0.5:1}}>Suivant</button>
+            </div>
+          </div>
         )}
       </div>
     </main>
