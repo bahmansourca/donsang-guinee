@@ -1,5 +1,7 @@
 import Link from "next/link";
 import HeroText from "@/components/HeroText";
+import QuickSearch from "@/components/QuickSearch";
+import HomeInfoCards from "@/components/HomeInfoCards";
 
 export default function Home() {
   // Client-only texts via i18n helper
@@ -26,45 +28,12 @@ export default function Home() {
         <div className="container grid gap-10 md:grid-cols-2 items-center py-12 md:py-20 relative z-10">
           <HeroText />
           <div className="relative">
-            <div className="rounded-2xl bg-white/90 ring-1 ring-black/10 p-6 shadow-lg">
-              <h3 className="font-semibold">Recherche de donneurs</h3>
-              <form action="/recherche" className="mt-4 grid md:grid-cols-2 gap-3">
-                <input name="city" placeholder="Ville (ex: Conakry)" className="w-full p-2 rounded-md ring-1 ring-black/10 bg-white" />
-                <select name="bloodGroup" className="w-full p-2 rounded-md ring-1 ring-black/10 bg-white">
-                  <option value="">Groupe sanguin</option>
-                  <option value="O_POS">O+</option>
-                  <option value="O_NEG">O-</option>
-                  <option value="A_POS">A+</option>
-                  <option value="A_NEG">A-</option>
-                  <option value="B_POS">B+</option>
-                  <option value="B_NEG">B-</option>
-                  <option value="AB_POS">AB+</option>
-                  <option value="AB_NEG">AB-</option>
-                </select>
-                <button className="btn btn-primary md:col-span-2">Rechercher</button>
-              </form>
-            </div>
+            <QuickSearch />
           </div>
         </div>
       </section>
 
-      <section className="container py-12 grid md:grid-cols-3 gap-6">
-        <div className="p-6 rounded-xl ring-1 ring-black/10 bg-white">
-          <h3 className="font-semibold">Qui peut donner ?</h3>
-          <p className="mt-2 text-sm text-black/70">Critères d’éligibilité pour devenir donneur.</p>
-          <Link href="/criteres" className="mt-3 inline-block text-[var(--brand-red)] font-medium">Découvrir les critères →</Link>
-        </div>
-        <div className="p-6 rounded-xl ring-1 ring-black/10 bg-white">
-          <h3 className="font-semibold">Comment se déroule un don ?</h3>
-          <p className="mt-2 text-sm text-black/70">Accueil, entretien, prélèvement et collation.</p>
-          <Link href="/etapes" className="mt-3 inline-block text-[var(--brand-red)] font-medium">Voir les étapes du don →</Link>
-        </div>
-        <div className="p-6 rounded-xl ring-1 ring-black/10 bg-white">
-          <h3 className="font-semibold">C’est votre premier don ?</h3>
-          <p className="mt-2 text-sm text-black/70">Tout ce qu’il faut savoir pour être serein.</p>
-          <Link href="/premier-don" className="mt-3 inline-block text-[var(--brand-red)] font-medium">Je me renseigne →</Link>
-        </div>
-      </section>
+      <HomeInfoCards />
     </main>
   );
 }

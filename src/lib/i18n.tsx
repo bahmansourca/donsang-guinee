@@ -18,6 +18,18 @@ const DICT: Dict = {
   quick_search: { fr: "Recherche de donneurs", en: "Donor search" },
   badge_official: { fr: "Plateforme officielle", en: "Official platform" },
   tagline: { fr: "Donnez aujourd’hui, sauvez demain", en: "Give today, save tomorrow" },
+  info_who_title: { fr: "Qui peut donner ?", en: "Who can donate?" },
+  info_who_text: { fr: "Critères d’éligibilité pour devenir donneur.", en: "Eligibility criteria to become a donor." },
+  info_who_cta: { fr: "Découvrir les critères →", en: "See criteria →" },
+  info_steps_title: { fr: "Comment se déroule un don ?", en: "How does a donation work?" },
+  info_steps_text: { fr: "Accueil, entretien, prélèvement et collation.", en: "Welcome, interview, collection and snack." },
+  info_steps_cta: { fr: "Voir les étapes du don →", en: "See donation steps →" },
+  info_first_title: { fr: "C’est votre premier don ?", en: "Is this your first donation?" },
+  info_first_text: { fr: "Tout ce qu’il faut savoir pour être serein.", en: "Everything you need to know to feel confident." },
+  info_first_cta: { fr: "Je me renseigne →", en: "Learn more →" },
+  quick_city_placeholder: { fr: "Ville (ex: Conakry)", en: "City (e.g., Conakry)" },
+  quick_blood_placeholder: { fr: "Groupe sanguin", en: "Blood group" },
+  quick_search_button: { fr: "Rechercher", en: "Search" },
 };
 
 function translate(key: keyof typeof DICT, lang: Lang) {
