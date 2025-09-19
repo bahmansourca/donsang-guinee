@@ -16,6 +16,8 @@ const DICT: Dict = {
   hero_sub: { fr: "Rejoignez le réseau national de donneurs volontaires en Guinée. Ensemble, répondons aux urgences.", en: "Join Guinea's national network of voluntary blood donors. Together, we respond to emergencies." },
   hero_check: { fr: "Vérifier mon admissibilité", en: "Check eligibility" },
   quick_search: { fr: "Recherche de donneurs", en: "Donor search" },
+  badge_official: { fr: "Plateforme officielle", en: "Official platform" },
+  tagline: { fr: "Donnez aujourd’hui, sauvez demain", en: "Give today, save tomorrow" },
 };
 
 function translate(key: keyof typeof DICT, lang: Lang) {

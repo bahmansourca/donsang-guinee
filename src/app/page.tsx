@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useI18n } from "@/lib/i18n";
+import HeroText from "@/components/HeroText";
 
 export default function Home() {
   // Client-only texts via i18n helper
@@ -24,23 +24,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container grid gap-10 md:grid-cols-2 items-center py-12 md:py-20 relative z-10">
-          <div className="max-w-xl">
-            <span className="badge">Plateforme officielle</span>
-            <h1 className="mt-4 text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-              Sauvez une vie <span className="text-[var(--brand-red)]">en un clic</span>
-            </h1>
-            <p className="mt-4 text-lg text-black/70">
-              Rejoignez le réseau national de donneurs volontaires en Guinée. Ensemble, répondons aux urgences.
-            </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Link href="/inscription" className="btn btn-primary">Devenir donneur</Link>
-              <Link href="/quiz" className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Vérifier mon admissibilité</Link>
-            </div>
-            <div className="mt-6 inline-flex items-center gap-3">
-              <img src="/logo-drop-guinea.svg" alt="goutte Guinée" width="40" height="40" />
-              <span className="text-sm text-black/60">Donnez aujourd’hui, sauvez demain</span>
-            </div>
-          </div>
+          <HeroText />
           <div className="relative">
             <div className="rounded-2xl bg-white/90 ring-1 ring-black/10 p-6 shadow-lg">
               <h3 className="font-semibold">Recherche de donneurs</h3>

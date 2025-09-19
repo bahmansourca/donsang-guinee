@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 
 export default function MobileNav() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (open) {
@@ -39,13 +41,13 @@ export default function MobileNav() {
               <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-white/20 text-white">✕</button>
             </div>
             <nav className="mt-5 grid gap-2 text-base font-medium text-black">
-              <Link href="/" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>Accueil</Link>
-              <Link href="/criteres" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>Qui peut donner ?</Link>
-              <Link href="/etapes" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>Étapes du don</Link>
-              <Link href="/quiz" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>Quiz</Link>
-              <Link href="/recherche" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>Recherche</Link>
-              <Link href="/actualites" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>Actualités</Link>
-              <Link href="/inscription" onClick={() => setOpen(false)} className="block mt-3 text-center px-3 py-2 rounded-md bg-white text-black font-semibold">Devenir donneur</Link>
+              <Link href="/" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>{t("nav_home")}</Link>
+              <Link href="/criteres" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>{t("nav_who")}</Link>
+              <Link href="/etapes" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>{t("nav_steps")}</Link>
+              <Link href="/quiz" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>{t("nav_quiz")}</Link>
+              <Link href="/recherche" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>{t("nav_search")}</Link>
+              <Link href="/actualites" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:brightness-95" style={{ background: "var(--brand-red)" }}>{t("nav_news")}</Link>
+              <Link href="/inscription" onClick={() => setOpen(false)} className="block mt-3 text-center px-3 py-2 rounded-md bg-white text-black font-semibold">{t("cta_donor")}</Link>
             </nav>
           </aside>
         </div>
