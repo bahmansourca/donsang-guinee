@@ -100,6 +100,12 @@ export default function AdminDonorsPage() {
         <button className="btn btn-primary md:col-span-6">Ajouter</button>
       </form>
 
+      <form action="/api/donors/import" method="post" encType="multipart/form-data" className="mt-3 flex items-center gap-2">
+        <input type="file" name="file" accept="text/csv" className="text-sm" />
+        <button className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Importer CSV</button>
+        <a href="/api/donors/export" className="text-sm underline">Télécharger l’exemple</a>
+      </form>
+
       <div className="mt-6 flex flex-wrap gap-2 items-center">
         <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Recherche (nom/ville)…" className="p-2 rounded-md ring-1 ring-black/10 bg-white w-full md:w-64" />
         <select value={bg} onChange={e=>setBg(e.target.value)} className="p-2 rounded-md ring-1 ring-black/10 bg-white">
