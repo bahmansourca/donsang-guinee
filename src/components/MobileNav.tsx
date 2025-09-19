@@ -40,7 +40,7 @@ export default function MobileNav() {
               <div className="font-semibold tracking-tight">Menu</div>
               <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-black/10">✕</button>
             </div>
-            <nav className="mt-5 grid gap-2 text-base font-medium">
+            <nav className="mt-5 grid gap-2 text-base font-medium text-black">
               <Link href="/" onClick={() => setOpen(false)} className="px-2 py-2 rounded hover:bg-black/5">Accueil</Link>
               <Link href="/criteres" onClick={() => setOpen(false)} className="px-2 py-2 rounded hover:bg-black/5">Qui peut donner ?</Link>
               <Link href="/etapes" onClick={() => setOpen(false)} className="px-2 py-2 rounded hover:bg-black/5">Étapes du don</Link>
