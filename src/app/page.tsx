@@ -10,7 +10,7 @@ export default function Home() {
           alt="Donneuse africaine"
           loading="eager"
           referrerPolicy="no-referrer"
-          className="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
+          className="absolute inset-0 w-full h-full object-contain bg-white opacity-100 z-0"
         />
         {/* Logo goutte + carte Guinée */}
         <div className="absolute right-[8%] top-20 md:top-24 z-0">
