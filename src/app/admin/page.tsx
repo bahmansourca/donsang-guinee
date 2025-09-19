@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { isAdmin } from "@/lib/auth";
+import LogoutButton from "./LogoutButton";
 
 export default function Page() {
   const authed = isAdmin();
@@ -18,9 +19,7 @@ export default function Page() {
       <div className="mb-4 text-xs text-black/60">Statut: <span className="badge">Connecté</span></div>
       <h1 className="text-3xl font-bold">Tableau de bord</h1>
       <p className="mt-2 text-black/70">Le module complet (donneurs, hôpitaux, alertes, statistiques) arrive dans le prochain lot.</p>
-      <form action="/admin/session" method="post" onSubmit={(e) => { e.preventDefault(); fetch('/admin/session', { method: 'DELETE' }).then(()=>location.href='/'); }}>
-        <button className="mt-6 btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Se déconnecter</button>
-      </form>
+      <LogoutButton />
     </main>
   );
 }
