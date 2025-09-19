@@ -8,6 +8,7 @@ export default function Page() {
   const [step, setStep] = useState<"form" | "code">("form");
   const [donorId, setDonorId] = useState<string | null>(null);
   const [channel, setChannel] = useState<"SMS" | "EMAIL">("SMS");
+  const [done, setDone] = useState(false);
 
   async function onRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -43,7 +44,7 @@ export default function Page() {
       const j = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(j?.error || "Code invalide");
       window.dispatchEvent(new CustomEvent("toast", { detail: { type: "success", message: "Inscription confirmée" } }));
-      window.location.href = "/";
+      setDone(true);
     } catch (err: any) {
       setError(err?.message || "Erreur inconnue");
       window.dispatchEvent(new CustomEvent("toast", { detail: { type: "error", message: "Vérification échouée" } }));
@@ -55,7 +56,16 @@ export default function Page() {
   return (
     <main className="container py-10 max-w-xl">
       <h1 className="text-3xl font-bold">Devenir donneur</h1>
-      {step === "form" ? (
+      {done ? (
+        <div className="mt-6 p-6 rounded-xl ring-1 ring-black/10 bg-white">
+          <h2 className="text-xl font-semibold">Merci pour votre inscription</h2>
+          <p className="text-sm text-black/70 mt-2">Votre profil est confirmé. Nous vous contacterons en cas de besoin urgent dans votre région.</p>
+          <div className="mt-4 flex gap-3">
+            <a href="/recherche" className="btn" style={{border:"1px solid rgba(0,0,0,0.1)"}}>Voir les donneurs</a>
+            <a href="/" className="btn btn-primary">Retour à l’accueil</a>
+          </div>
+        </div>
+      ) : step === "form" ? (
         <form onSubmit={onRegister} className="mt-6 grid gap-3">
           <div className="flex gap-3 items-center text-sm">
             <label className="font-semibold">Recevoir le code par</label>
