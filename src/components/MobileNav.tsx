@@ -8,32 +8,35 @@ export default function MobileNav() {
     <div className="md:hidden">
       <button
         aria-label="Ouvrir le menu"
+        aria-expanded={open}
         onClick={() => setOpen(true)}
         className="inline-flex items-center justify-center w-10 h-10 rounded-lg ring-1 ring-black/10 bg-white shadow"
       >
-        <span className="block w-5 h-0.5 bg-black mb-1" />
-        <span className="block w-5 h-0.5 bg-black mb-1" />
-        <span className="block w-5 h-0.5 bg-black" />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
       </button>
 
       {open && (
         <div className="fixed inset-0 z-[60]">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-0 h-full w-72 bg-white shadow-xl p-5 flex flex-col gap-4">
+          <aside className="absolute right-0 top-0 h-full w-72 bg-white shadow-xl p-5 flex flex-col">
             <div className="flex items-center justify-between">
-              <div className="font-semibold">Menu</div>
-              <button aria-label="Fermer" onClick={() => setOpen(false)} className="text-black/60">✕</button>
+              <div className="font-semibold tracking-tight">Menu</div>
+              <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-black/10">✕</button>
             </div>
-            <nav className="grid gap-3 text-sm">
-              <Link href="/" onClick={() => setOpen(false)}>Accueil</Link>
-              <Link href="/criteres" onClick={() => setOpen(false)}>Qui peut donner ?</Link>
-              <Link href="/etapes" onClick={() => setOpen(false)}>Étapes du don</Link>
-              <Link href="/quiz" onClick={() => setOpen(false)}>Quiz</Link>
-              <Link href="/recherche" onClick={() => setOpen(false)}>Recherche</Link>
-              <Link href="/actualites" onClick={() => setOpen(false)}>Actualités</Link>
+            <nav className="mt-4 grid gap-3 text-sm">
+              <Link href="/" onClick={() => setOpen(false)} className="hover:underline">Accueil</Link>
+              <Link href="/criteres" onClick={() => setOpen(false)} className="hover:underline">Qui peut donner ?</Link>
+              <Link href="/etapes" onClick={() => setOpen(false)} className="hover:underline">Étapes du don</Link>
+              <Link href="/quiz" onClick={() => setOpen(false)} className="hover:underline">Quiz</Link>
+              <Link href="/recherche" onClick={() => setOpen(false)} className="hover:underline">Recherche</Link>
+              <Link href="/actualites" onClick={() => setOpen(false)} className="hover:underline">Actualités</Link>
               <Link href="/inscription" onClick={() => setOpen(false)} className="btn btn-primary mt-2 text-center">Devenir donneur</Link>
             </nav>
-          </div>
+          </aside>
         </div>
       )}
     </div>

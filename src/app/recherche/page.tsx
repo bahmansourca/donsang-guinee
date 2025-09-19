@@ -25,3 +25,5 @@ export default function Page({ searchParams }: { searchParams?: { city?: string;
 }
 
 
+
+
