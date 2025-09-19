@@ -6,7 +6,7 @@ export default function Home() {
       <section className="relative overflow-hidden" style={{minHeight: "55vh"}}>
         {/* Grande image de la donneuse en <img> direct pour compatibilité CDN */}
         <img
-          src="https://images.pexels.com/photos/7108163/pexels-photo-7108163.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          src="/hero.jpg"
           alt="Donneuse africaine"
           loading="eager"
           referrerPolicy="no-referrer"
