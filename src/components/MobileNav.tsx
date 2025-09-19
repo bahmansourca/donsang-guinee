@@ -32,23 +32,21 @@ export default function MobileNav() {
         <div className="fixed inset-0 z-[80]">
           {/* arrière-plan assombri cliquable */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
-          {/* panneau blanc avec bloc rouge derrière les options */}
-          <aside className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl ring-1 ring-black/10 p-6 flex flex-col">
+          {/* panneau intégral dans un cadre rouge */}
+          <aside className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-[var(--brand-red)] shadow-2xl ring-1 ring-black/10 p-6 flex flex-col text-black">
             <div className="flex items-center justify-between">
-              <div className="font-semibold tracking-tight">Menu</div>
-              <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-black/10">✕</button>
+              <div className="font-semibold tracking-tight text-white">Menu</div>
+              <button aria-label="Fermer" onClick={() => setOpen(false)} className="inline-flex items-center justify-center w-9 h-9 rounded-md ring-1 ring-white/20 text-white">✕</button>
             </div>
-            <div className="mt-5 rounded-xl bg-[var(--brand-red)] p-3">
-              <nav className="grid gap-2 text-base font-medium text-black">
-                <Link href="/" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:bg-black/10">Accueil</Link>
-                <Link href="/criteres" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:bg-black/10">Qui peut donner ?</Link>
-                <Link href="/etapes" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:bg-black/10">Étapes du don</Link>
-                <Link href="/quiz" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:bg-black/10">Quiz</Link>
-                <Link href="/recherche" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:bg-black/10">Recherche</Link>
-                <Link href="/actualites" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md hover:bg-black/10">Actualités</Link>
-                <Link href="/inscription" onClick={() => setOpen(false)} className="block mt-3 text-center px-3 py-2 rounded-md bg-white text-black font-semibold">Devenir donneur</Link>
-              </nav>
-            </div>
+            <nav className="mt-5 grid gap-2 text-base font-medium">
+              <Link href="/" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Accueil</Link>
+              <Link href="/criteres" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Qui peut donner ?</Link>
+              <Link href="/etapes" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Étapes du don</Link>
+              <Link href="/quiz" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Quiz</Link>
+              <Link href="/recherche" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Recherche</Link>
+              <Link href="/actualites" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md bg-white/90">Actualités</Link>
+              <Link href="/inscription" onClick={() => setOpen(false)} className="block mt-3 text-center px-3 py-2 rounded-md bg-white text-[var(--brand-red)] font-semibold">Devenir donneur</Link>
+            </nav>
           </aside>
         </div>
       )}
