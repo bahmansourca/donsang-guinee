@@ -5,11 +5,15 @@ import { prisma } from "@/lib/prisma";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const city = searchParams.get("city") || undefined;
+  const region = searchParams.get("region") || undefined;
   const bloodGroup = searchParams.get("bloodGroup") || undefined;
+  const verifiedOnly = (searchParams.get("verifiedOnly") ?? "true").toLowerCase() !== "false";
   const where: any = {};
   if (city) where.city = { contains: city, mode: "insensitive" };
+  if (region) where.region = region;
   if (bloodGroup) where.bloodGroup = bloodGroup;
-  const donors = await prisma.donor.findMany({ where, orderBy: { createdAt: "desc" } });
+  if (verifiedOnly) where.verified = true;
+  const donors = await prisma.donor.findMany({ where, orderBy: { createdAt: "desc" }, take: 100 });
   return NextResponse.json({ donors });
 }
 
