@@ -9,6 +9,7 @@ import LangSwitcher from "@/components/LangSwitcher";
 import NavLinks from "@/components/NavLinks";
 import MobileNav from "@/components/MobileNav";
 import HeaderCTA from "@/components/HeaderCTA";
+import FooterContent from "@/components/FooterContent";
 
 export const metadata: Metadata = {
   title: "Don de Sang Guinée",
@@ -48,25 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Toaster />
         <footer className="mt-16 border-t border-black/10 dark:border-white/10">
-          <div className="container py-8 grid gap-6 md:grid-cols-3 text-sm">
-            <div>
-              <div className="font-semibold mb-2">Liens utiles</div>
-              <ul className="space-y-1">
-                <li><a className="hover:underline" href="#" target="_blank" rel="noreferrer">Ministère de la Santé</a></li>
-                <li><a className="hover:underline" href="#" target="_blank" rel="noreferrer">Croix-Rouge Guinée</a></li>
-                <li><a className="hover:underline" href="#" target="_blank" rel="noreferrer">Partenaires</a></li>
-              </ul>
-            </div>
-            <div>
-              <div className="font-semibold mb-2">Contact</div>
-              <p>Email: contact@donsang-guinee.org</p>
-              <p>Tél: +224 600 00 00 00</p>
-            </div>
-            <div>
-              <div className="font-semibold mb-2">Mentions</div>
-              <p className="text-black/60 dark:text-white/60">© {new Date().getFullYear()} Don de Sang Guinée</p>
-            </div>
-          </div>
+          <FooterContent />
         </footer>
         </I18nProvider>
       </body>

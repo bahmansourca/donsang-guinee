@@ -77,6 +77,16 @@ const DICT: Dict = {
   search_title: { fr: "Recherche de donneurs", en: "Donor search" },
   loading: { fr: "Chargement…", en: "Loading…" },
   empty_results: { fr: "Aucun donneur trouvé.", en: "No donors found." },
+  // footer
+  footer_links: { fr: "Liens utiles", en: "Useful links" },
+  footer_contact: { fr: "Contact", en: "Contact" },
+  footer_mentions: { fr: "Mentions", en: "Legal" },
+  footer_ministry: { fr: "Ministère de la Santé", en: "Ministry of Health" },
+  footer_redcross: { fr: "Croix-Rouge Guinée", en: "Guinea Red Cross" },
+  footer_partners: { fr: "Partenaires", en: "Partners" },
+  footer_email_label: { fr: "Email", en: "Email" },
+  footer_phone_label: { fr: "Tél", en: "Tel" },
+  footer_copyright: { fr: "Don de Sang Guinée", en: "Guinea Blood Donation" },
 };
 
 function translate(key: keyof typeof DICT, lang: Lang) {
